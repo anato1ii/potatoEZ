@@ -7,7 +7,7 @@ CREATE TABLE #EY_Groups
 
 INSERT INTO #EY_Groups
 VALUES 
-('609W_public'),
+('609W_public'),adsasd
 ('D66P_public'),
 ('F58T_public'),
 ('886X_public'),
