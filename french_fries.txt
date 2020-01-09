@@ -1,0 +1,37 @@
+USE concert_003
+GO
+
+--TEMPORARY TABLE for Debug only -----------
+CREATE TABLE #EY_Groups
+(GroupsId INT IDENTITY, GroupName NVARCHAR(30))
+
+INSERT INTO #EY_Groups
+VALUES 
+('609W_public'),
+('D66P_public'),
+('F58T_public'),
+('886X_public'),
+('B08C_public'),
+('E04B_public'),
+('G40U_public'),
+('G38Y_public');
+
+SELECT * FROM #EY_Groups
+GO
+
+--  -------------------------------------
+
+DECLARE @EYGROUP nvarchar(128) = 'H51K_public';
+
+DECLARE @GID nvarchar(128) SELECT @GID = [id] FROM [concert_003].[dbo].[concert_group] WHERE name = @EYGROUP;
+
+SELECT * FROM [concert_003].[dbo].[concert_user_group] WHERE concert_group_id = @GID
+SELECT * FROM [concert_003].[dbo].[concert_group_client] WHERE concert_group_id = @GID;
+SELECT * FROM [concert_003].[dbo].[concert_group_permission] WHERE concert_group_id = @GID;
+SELECT * FROM [concert_003].[dbo].[concert_group_product] WHERE concert_group_id = @GID;
+
+--OPTION: Delete parent GROUP
+--SELECT * FROM concert_group WHERE name = @EYGROUP
+
+GO
+
